@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema name="autoSolrSchema" version="1.5">
+    <types>
+        <fieldType class="org.apache.solr.schema.TextField" name="TextField">
+            <analyzer>
+                <tokenizer class="solr.StandardTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+            </analyzer>
+        </fieldType>
+        <fieldType class="org.apache.solr.schema.StrField" name="StrField"/>
+        <fieldType class="org.apache.solr.schema.UUIDField" name="UUIDField"/>
+        <fieldType class="org.apache.solr.schema.TrieDateField" name="TrieDateField"/>
+    </types>
+    <fields>
+        <field indexed="true" multiValued="false" name="entity_id" stored="true" type="TextField"/>
+        <field indexed="true" multiValued="false" name="message" stored="true" type="TextField"/>
+        <field indexed="true" multiValued="false" name="state" stored="true" type="StrField"/>
+        <field indexed="true" multiValued="false" name="application_id" stored="true" type="TextField"/>
+        <field docValues="true" indexed="true" multiValued="false" name="id" stored="true" type="UUIDField"/>
+        <field docValues="true" indexed="true" multiValued="false" name="tx_date" stored="true" type="TrieDateField"/>
+    </fields>
+    <uniqueKey>(id,tx_date,state)</uniqueKey>
+</schema>
